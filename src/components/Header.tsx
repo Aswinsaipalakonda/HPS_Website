@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, ChevronDown, Monitor, GraduationCap, TrendingUp, Smartphone, Palette, Code, Zap, Database } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
-import hpsLogo from "@/assets/hps_new_logo.png";
+// Using public folder logo
+const hpsLogo = "/HPS_logo.png";
 import LazyImage from "@/components/LazyImage";
 
 // Services dropdown data
@@ -72,7 +73,6 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [isVisible, setIsVisible] = useState(true);
   const navRefs = useRef<{ [key: string]: HTMLAnchorElement | HTMLButtonElement | null }>({});
   const dropdownRef = useRef<HTMLDivElement>(null);
   const previousActiveIndexRef = useRef<number | null>(null);
@@ -85,21 +85,6 @@ const Header = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 20);
-
-      // Only hide/show navbar if scrolled past a threshold
-      if (currentScrollY > 100) {
-        if (currentScrollY > lastScrollY.current) {
-          // Scrolling down - hide navbar
-          setIsVisible(false);
-        } else if (currentScrollY < lastScrollY.current) {
-          // Scrolling up - show navbar immediately
-          setIsVisible(true);
-        }
-      } else {
-        // Always show navbar when near top
-        setIsVisible(true);
-      }
-
       lastScrollY.current = currentScrollY;
     };
 
@@ -278,12 +263,8 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         !isHomePage || isScrolled
-          ? "bg-background/90 backdrop-blur-sm border-b border-border/50 shadow-sm" 
-          : ""
-      } ${
-        isVisible 
-          ? "translate-y-0 opacity-100" 
-          : "-translate-y-full opacity-0"
+          ? "bg-background/90 backdrop-blur-sm border-b border-border/50 shadow-sm translate-y-0 opacity-100" 
+          : "translate-y-0 opacity-100"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -373,14 +354,16 @@ const Header = () => {
           </Button>
         </div>
 
+
         {/* Mobile Navigation Menu */}
         <div 
           className={`
             lg:hidden overflow-hidden transition-all duration-300 ease-in-out
-            ${isMobileMenuOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"}
+            bg-background/95 backdrop-blur-md
+            ${isMobileMenuOpen ? "max-h-[100vh] opacity-100 pb-8 border-b border-border/50" : "max-h-0 opacity-0"}
           `}
         >
-          <nav className="flex flex-col gap-1 pt-2">
+          <nav className="flex flex-col pt-4">
             {navLinks.map((link) => {
               let isActive = false;
               if (link.path !== "#") {
@@ -405,16 +388,15 @@ const Header = () => {
                       }
                     }}
                     className={`
-                      px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200
-                      flex items-center justify-between
+                      w-full px-6 py-4 text-sm font-medium transition-all duration-200
+                      flex items-center justify-between border-l-4
                       ${isActive 
-                        ? "text-primary bg-primary/10" 
-                        : "text-foreground/80"
+                        ? "text-primary bg-primary/5 border-primary" 
+                        : "text-foreground/80 border-transparent hover:text-primary hover:bg-muted/50"
                       }
-                      ${!isActive ? "hover:text-primary hover:bg-primary/5" : ""}
                     `}
                   >
-                    <span>{link.label}</span>
+                    <span className="text-base tracking-wide">{link.label}</span>
                     {link.hasDropdown && (
                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`} />
                     )}
@@ -422,7 +404,7 @@ const Header = () => {
 
                   {/* Mobile Services Dropdown */}
                   {link.label === "Services" && isDropdownOpen && (
-                    <div className="ml-4 mt-1 bg-background/50 rounded-lg p-2 space-y-1">
+                    <div className="bg-muted/30 border-y border-border/30">
                       {servicesDropdown.map((service) => {
                         const IconComponent = service.icon;
                         return (
@@ -430,9 +412,9 @@ const Header = () => {
                             key={service.title}
                             to={service.path}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="flex items-center gap-3 px-3 py-2 rounded-md text-xs text-foreground/80 hover:text-primary hover:bg-primary/5 transition-all duration-200"
+                            className="flex items-center gap-4 px-10 py-3.5 text-sm text-foreground/80 hover:text-primary hover:bg-background transition-all duration-200"
                           >
-                            <IconComponent className="w-3.5 h-3.5 text-primary/70" />
+                            <IconComponent className="w-4 h-4 text-primary" />
                             <span className="font-medium">{service.title}</span>
                           </Link>
                         );

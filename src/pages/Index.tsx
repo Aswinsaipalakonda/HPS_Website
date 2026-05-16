@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -13,10 +14,16 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <SocialSidebar />
-      <FloatingContact />
+    <>
+      <Helmet>
+        <title>HPS - Custom Web & App Development | Digital Marketing Agency</title>
+        <meta name="description" content="HPS is a leading web and mobile app development company, specializing in custom websites, e-commerce solutions, and digital marketing services to drive business growth." />
+        <link rel="canonical" href="https://www.thehps.in/" />
+      </Helmet>
+      <div className="min-h-screen">
+        <Header />
+        <SocialSidebar />
+        <FloatingContact />
       <Hero />
       <ScrollAnimation animation="fade-up" delay={0}>
         <Services />
@@ -34,8 +41,9 @@ const Index = () => {
         <OurClients />
       </ScrollAnimation>
         <ContactCard />
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

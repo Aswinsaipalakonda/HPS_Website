@@ -15,46 +15,41 @@ const clientCaseStudies = [
   {
     id: 1,
     title: "JNTUACEK",
-    target: "Hostel Automation software with Biometric integration and Fee Management System",
+    target: "Complete College Suite Software with Hostel Automation, Fee Management System, Student Information System, and more",
     image: "/client_case_study/jntuacek.jpeg",
   },
   {
     id: 2,
+    title: "JNTUKN",
+    target: "Under implementation of College Suite Software with Hostel Automation, Fee Management System, Student Information System, and more",
+    image: "/client_case_study/jntun.webp",
+  },
+  {
+    id: 3,
     title: "ManMade",
     target: "Online Salon Furniture display and SEO optimized website",
     image: "/client_case_study/manmade.jpg",
   },
   {
-    id: 3,
+    id: 4,
     title: "Beauty Centre",
     target: "Full developed ecommerce website and Native Andriod, IOS App",
     image: "/client_case_study/beautycentre.jpeg",
   },
-  {
-    id: 4,
-    title: "Hirawats: Scaling E-Commerce with SEO",
-    target: "Medical buyers",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
-  },
-  {
-    id: 5,
-    title: "Ayaansh Infra Launch",
-    target: "Real estate buyers",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
-  },
-  {
-    id: 6,
-    title: "Relaxwell: Digital Transformation",
-    target: "Home furnishing buyers",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
-  },
+  
 ];
 
 const clientLogos = [
   {
     name: "JNTUA",
-    category: "Hostel Automation",
+    category: "EduSuite Pro",
     logo: "/client-logos/jntua-mainlogo.png",
+    hasLogo: true
+  },
+  {
+    name: "JNTUN",
+    category: "EduSuite Pro",
+    logo: "/client-logos/jntuk-logo.png",
     hasLogo: true
   },
   {
@@ -73,6 +68,36 @@ const clientLogos = [
     name: "Beauty Center",
     category: "",
     logo: "/client-logos/beautycenter.jpeg",
+    hasLogo: true
+  },
+  {
+    name: "XTPL",
+    category: "",
+    logo: "/client-logos/xptl.png",
+    hasLogo: true
+  },
+  {
+    name: "Mobile Fixer",
+    category: "",
+    logo: "/client-logos/mobilefixer.png",
+    hasLogo: true
+  },
+  {
+    name: "Tennis Theory",
+    category: "",
+    logo: "/client-logos/tennistheory.png",
+    hasLogo: true
+  },
+  {
+    name: "Grace News",
+    category: "",
+    logo: "/client-logos/gracenews.png",
+    hasLogo: true
+  },
+  {
+    name: "Ginzer",
+    category: "",
+    logo: "/client-logos/ginzer.png",
     hasLogo: true
   },
 ];

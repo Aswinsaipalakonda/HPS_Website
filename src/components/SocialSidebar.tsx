@@ -14,32 +14,25 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 const SocialSidebar = () => {
   const socialLinks = [
     {
-      href: "https://wa.me/1234567890",
+      href: "https://wa.me/+919246615251",
       icon: WhatsAppIcon,
       label: "WhatsApp",
       bgColor: "bg-[#25D366]",
       hoverBgColor: "hover:bg-[#20BA5A]",
     },
     {
-      href: "tel:+1234567890",
+      href: "tel:+919246615251",
       icon: Phone,
       label: "Call",
-      bgColor: "bg-[#34C759]",
-      hoverBgColor: "hover:bg-[#2FB350]",
+      bgColor: "bg-[#092f2e]",
+      hoverBgColor: "hover:bg-[#092f2e]",
     },
     {
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/harsha_perfect_solutions",
       icon: Instagram,
       label: "Instagram",
       bgColor: "bg-[#E4405F]",
       hoverBgColor: "hover:bg-[#D32E4A]",
-    },
-    {
-      href: "https://linkedin.com",
-      icon: Linkedin,
-      label: "LinkedIn",
-      bgColor: "bg-[#0A66C2]",
-      hoverBgColor: "hover:bg-[#095195]",
     },
   ];
 

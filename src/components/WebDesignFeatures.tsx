@@ -14,6 +14,16 @@ const expertiseAreas = [
 
 const WebDesignFeatures = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    updateLayout();
+    window.addEventListener('resize', updateLayout);
+    return () => window.removeEventListener('resize', updateLayout);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -114,14 +124,14 @@ const WebDesignFeatures = () => {
           </div>
 
           {/* Right Column - Animated Circular Display */}
-          <div className="relative w-full max-w-md mx-auto aspect-square">
-          <div className="absolute inset-0 rounded-full border border-emerald-500/10 animate-spin" style={{ animationDuration: '40s' }} />
-            <div className="absolute inset-6 rounded-full border border-emerald-500/15 animate-spin" style={{ animationDuration: '30s', animationDirection: 'reverse' }} />
-            <div className="absolute inset-12 rounded-full border border-emerald-500/20 animate-spin" style={{ animationDuration: '25s' }} />
+          <div className="relative w-full max-w-[300px] sm:max-w-md mx-auto aspect-square flex items-center justify-center pt-8 sm:pt-0">
+            <div className={`absolute inset-0 rounded-full border border-emerald-500/20 animate-spin flex items-center justify-center`} style={{ animationDuration: '40s' }} />
+            <div className="absolute inset-8 rounded-full border border-emerald-500/15 animate-spin" style={{ animationDuration: '30s', animationDirection: 'reverse' }} />
+            <div className="absolute inset-16 rounded-full border border-emerald-500/10 animate-spin" style={{ animationDuration: '25s' }} />
             
             {/* Center Main Circle */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-32 h-32 rounded-full bg-emerald-500/10 backdrop-blur-sm flex items-center justify-center border-2 border-emerald-500/30 shadow-lg">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className={`relative ${isMobile ? 'w-24 h-24' : 'w-32 h-32'} rounded-full bg-emerald-500/10 backdrop-blur-sm flex items-center justify-center border-2 border-emerald-500/30 shadow-lg pointer-events-auto`}>
                 {/* Active Icon Display */}
                 {expertiseAreas.map((area, index) => {
                   const IconComponent = area.icon;
@@ -133,7 +143,7 @@ const WebDesignFeatures = () => {
                         isActive ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-50 rotate-180'
                       }`}
                     >
-                      <IconComponent className="w-8 h-8 text-emerald-600 mb-2" strokeWidth={1.5} />
+                      <IconComponent className={`${isMobile ? 'w-6 h-6' : 'w-8 h-8'} text-emerald-600 mb-1 sm:mb-2`} strokeWidth={1.5} />
                       <span className="text-xs font-medium text-slate-800">
                         {area.label}
                       </span>
@@ -150,7 +160,7 @@ const WebDesignFeatures = () => {
             {expertiseAreas.map((area, index) => {
               const IconComponent = area.icon;
               const angle = (index * (360 / expertiseAreas.length)) * (Math.PI / 180);
-              const radius = 200;
+              const radius = isMobile ? 120 : 180;
               const x = Math.cos(angle) * radius;
               const y = Math.sin(angle) * radius;
               const isActive = index === activeIndex;
@@ -164,13 +174,15 @@ const WebDesignFeatures = () => {
                   }}
                 >
                   <div 
-                    className={`w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all duration-500 shadow-lg ${
+                    className={`rounded-full border-2 flex items-center justify-center transition-all duration-500 shadow-lg ${
+                      isMobile ? 'w-10 h-10' : 'w-14 h-14'
+                    } ${
                       isActive 
                         ? 'border-emerald-500 bg-emerald-500/20 scale-125 shadow-emerald-500/25' 
                         : 'border-slate-300 bg-white/80 scale-100 hover:scale-110'
                     }`}
                   >
-                    <IconComponent className={`w-5 h-5 transition-colors duration-500 ${
+                    <IconComponent className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'} transition-colors duration-500 ${
                       isActive ? 'text-emerald-600' : 'text-slate-500 hover:text-emerald-600'
                     }`} strokeWidth={1.5} />
                   </div>
@@ -203,6 +215,7 @@ const WebDesignFeatures = () => {
           </p>
           <Button 
             className="bg-primary hover:bg-primary/90 text-primary-foreground group shadow-lg hover:shadow-xl transition-all duration-300 rounded-full px-6 py-5 text-sm font-medium"
+            onClick={() => window.location.href = '/contact'}
           >
             Ready to Start?
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

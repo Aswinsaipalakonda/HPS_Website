@@ -93,8 +93,8 @@ const FloatingContact = () => {
             ${isFormOpen 
               ? "w-[500px] h-[580px] bg-white border border-gray-200"
               : isExpanded 
-                ? "w-auto h-14 bg-red-500"
-                : "w-14 h-14 bg-red-500"
+                ? "w-auto h-14 bg-primary"
+                : "w-14 h-14 bg-primary"
             }
             transition-all duration-300
           `}
@@ -103,7 +103,7 @@ const FloatingContact = () => {
           {!isFormOpen && (
             <Button 
               onClick={handleButtonClick}
-              className={`w-full h-full rounded-[30px] bg-red-500 hover:bg-red-600 text-white group transition-all duration-300 flex items-center justify-center ${
+              className={`w-full h-full rounded-[30px] bg-primary hover:bg-primary/90 text-white group transition-all duration-300 flex items-center justify-center ${
                 isExpanded ? 'px-6' : 'px-0'
               }`}
             >
@@ -122,8 +122,8 @@ const FloatingContact = () => {
               {/* Form Header */}
               <div className="flex items-center justify-between p-6 bg-white">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-red-500/10">
-                    <MessageCircle className="w-5 h-5 text-red-500" />
+                  <div className="p-3 rounded-xl bg-primary/10">
+                    <MessageCircle className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900" style={{fontFamily: '"Poppins", sans-serif', fontWeight: 500}}>Send us a Message</h3>
@@ -145,23 +145,23 @@ const FloatingContact = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="quick-name" className="block text-xs font-medium text-gray-700">
-                      Your Name <span className="text-red-500">*</span>
+                      Your Name <span className="text-primary">*</span>
                     </label>
                     <Input 
                       id="quick-name" 
-                      className="h-10 text-sm border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all bg-white"
+                      className="h-10 text-sm border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all bg-white"
                       required
                     />
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="quick-email" className="block text-xs font-medium text-gray-700">
-                      Email Address <span className="text-red-500">*</span>
+                      Email Address <span className="text-primary">*</span>
                     </label>
                     <Input 
                       id="quick-email" 
                       type="email" 
-                      className="h-10 text-sm border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all bg-white"
+                      className="h-10 text-sm border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all bg-white"
                       required
                     />
                   </div>
@@ -170,23 +170,23 @@ const FloatingContact = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="quick-phone" className="block text-xs font-medium text-gray-700">
-                      Phone Number <span className="text-red-500">*</span>
+                      Phone Number <span className="text-primary">*</span>
                     </label>
                     <Input 
                       id="quick-phone" 
-                      className="h-10 text-sm border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all bg-white"
+                      className="h-10 text-sm border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all bg-white"
                       required
                     />
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="quick-service" className="block text-xs font-medium text-gray-700">
-                      Service Interested In <span className="text-red-500">*</span>
+                      Service Interested In <span className="text-primary">*</span>
                     </label>
                     <Select required>
                       <SelectTrigger 
                         id="quick-service"
-                        className="w-full h-10 px-3 rounded-lg border border-gray-300 bg-white focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all text-gray-900 text-sm hover:border-red-500/50"
+                        className="w-full h-10 px-3 rounded-lg border border-gray-300 bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900 text-sm hover:border-primary/50"
                       >
                         <SelectValue placeholder="Select a service" className="text-gray-500" />
                       </SelectTrigger>
@@ -200,7 +200,7 @@ const FloatingContact = () => {
                           <SelectItem 
                             key={index} 
                             value={service}
-                            className="text-sm focus:bg-red-500/10 focus:text-red-500 cursor-pointer hover:bg-red-500/5"
+                            className="text-sm focus:bg-primary/10 focus:text-primary cursor-pointer hover:bg-primary/5"
                           >
                             {service}
                           </SelectItem>
@@ -212,20 +212,20 @@ const FloatingContact = () => {
 
                 <div className="space-y-2">
                   <label htmlFor="quick-message" className="block text-xs font-medium text-gray-700">
-                    Project Details <span className="text-red-500">*</span>
+                    Project Details <span className="text-primary">*</span>
                   </label>
                   <Textarea 
                     id="quick-message" 
                     placeholder="Tell us about your project requirements, timeline, and budget..." 
                     rows={6}
-                    className="text-sm border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all resize-none bg-white"
+                    className="text-sm border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none bg-white"
                     required
                   />
                 </div>
 
                 <Button 
                   onClick={handleSubmit}
-                  className="w-full h-12 bg-red-500 hover:bg-red-600 text-white transition-all duration-300 text-sm font-medium group rounded-full px-6 border-2 border-red-500/30 hover:scale-105"
+                  className="w-full h-12 bg-primary hover:bg-primary/90 text-white transition-all duration-300 text-sm font-medium group rounded-full px-6 border-2 border-primary/30 hover:scale-105"
                 >
                   Send Message
                   <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

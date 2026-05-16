@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -59,9 +60,15 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <SocialSidebar />
+    <>
+      <Helmet>
+        <title>Contact Us - HPS</title>
+        <meta name="description" content="Contact HPS for all your web and mobile app development needs. We're here to help you grow your business." />
+        <link rel="canonical" href="https://www.thehps.in/contact" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <SocialSidebar />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pb-20 relative overflow-hidden">
@@ -265,8 +272,9 @@ const ContactPage = () => {
         </div>
       </section>
       
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

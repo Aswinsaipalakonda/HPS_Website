@@ -4,8 +4,9 @@ import SocialSidebar from "@/components/SocialSidebar";
 import FloatingContact from "@/components/FloatingContact";
 import ContactCard from "@/components/ContactCard";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import { Briefcase, Building, Calendar, Heart, Lightbulb, Sparkles, Users, Target, Rocket, Zap, ArrowRight, ChevronLeft, ChevronRight, Code, Palette, TrendingUp } from "lucide-react";
+import { Briefcase, Building, Calendar, Heart, Lightbulb, Sparkles, Users, Target, Rocket, Zap, ArrowRight, ChevronLeft, ChevronRight, Code, Palette, TrendingUp, Handshake, FileText, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import LazyImage from "@/components/LazyImage";
 
@@ -13,6 +14,11 @@ const clients = [
     {
         name: "JNTUACEK",
         logo: "/client-logos/jntua-mainlogo.png",
+        category: "Educational Institute"
+    },
+    {
+        name: "JNTUKN",
+        logo: "/client-logos/jntuk-logo.png",
         category: "Educational Institute"
     },
     {
@@ -26,16 +32,54 @@ const clients = [
         category: "Salon Industry"
     },
     {
+        name: "XPTL",
+        logo: "/client-logos/xptl.png",
+        category: "E-Commerce"
+    },
+    {
+        name: "Mobile Fixer",
+        logo: "/client-logos/mobilefixer.png",
+        category: "Mobile Repair"
+    },
+    {
+        name: "Tennis Theory",
+        logo: "/client-logos/tennistheory.png",
+        category: "Tennis Coaching"
+    },
+    {
         name: "Suryan Energy",
         logo: "/client-logos/Logo.png",
         category: "Renewable Energy"
     },
 ];
 
+// MoU Partners Data
+const mouPartners = [
+    {
+        name: "JNTUA University",
+        logo: "/client-logos/jntua-mainlogo.png",
+        type: "Academic Partnership",
+        description: "Strategic collaboration for research and development in emerging technologies"
+    },
+    {
+        name: "TechEduSpace",
+        logo: "/client-logos/techeduspace.png",
+        type: "Innovation Center",
+        description: "Joint innovation lab for cutting-edge technology solutions"
+    },
+    {
+        name: "Betatek",
+        logo: "/client-logos/betatek.png",
+        type: "Training Partner",
+        description: "Skill development and training programs for digital transformation"
+    },
+    
+];
+
 // Updated realistic stats
 const stats = [
-    { number: "15+", label: "Successful Projects" },
-    { number: "12+", label: "Satisfied Clients" },
+    { number: "150+", label: "Successful Projects" },
+    { number: "50+", label: "Satisfied Clients" },
     { number: "99.9%", label: "Project Success Rate" },
     { number: "24/7", label: "Client Support" },
 ];
@@ -52,40 +96,17 @@ const expertiseAreas = [
 const eventGallery = [
     {
         id: 1,
-        title: "JNTUA Workshop",
-        target: "Digital transformation workshop at JNTUA College",
-        image: "/client_case_study/jntuacek.jpeg",
+        title: "EduSuite Pro Training",
+        target: "Demo session for EduSuite Pro",
+        image: "/event-images/jntuacekdemo.jpg",
     },
     {
         id: 2,
-        title: "Beauty Centre Launch",
-        target: "Grand opening event of Beauty Centre",
-        image: "/client_case_study/beautycentre.jpeg",
+        title: "Career Guidance Summit 27 April 2025",
+        target: "Career guidance summit for students",
+        image: "/event-images/career_guidance.JPG",
     },
-    {
-        id: 3,
-        title: "ManMade Brand Event",
-        target: "Brand activation and product launch",
-        image: "/client_case_study/manmade.jpg",
-    },
-    {
-        id: 4,
-        title: "Tech Seminar 2024",
-        target: "Annual technology and innovation seminar",
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=400&fit=crop",
-    },
-    {
-        id: 5,
-        title: "Client Meet 2024",
-        target: "Quarterly client appreciation event",
-        image: "https://images.unsplash.com/photo-1515168833906-d2a3b82daa4e?w=500&h=400&fit=crop",
-    },
-    {
-        id: 6,
-        title: "Digital Marketing Workshop",
-        target: "Hands-on digital marketing training session",
-        image: "https://images.unsplash.com/photo-1551836026-d5c2c0b0ab59?w=500&h=400&fit=crop",
-    },
+    
 ];
 
 const PortfolioPage = () => {
@@ -93,6 +114,7 @@ const PortfolioPage = () => {
     const [currentEventIndex, setCurrentEventIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
     const [visibleCards, setVisibleCards] = useState(4);
+    const [isMobile, setIsMobile] = useState(false);
 
     // Expertise rotation
     useEffect(() => {
@@ -102,21 +124,24 @@ const PortfolioPage = () => {
         return () => clearInterval(interval);
     }, []);
 
-    // Responsive cards logic
+    // Responsive cards and orbital logic
     useEffect(() => {
-        const updateVisibleCards = () => {
-            if (window.innerWidth < 640) {
+        const updateLayout = () => {
+            const width = window.innerWidth;
+            setIsMobile(width < 640);
+            
+            if (width < 640) {
                 setVisibleCards(1);
-            } else if (window.innerWidth < 1024) {
+            } else if (width < 1024) {
                 setVisibleCards(2);
             } else {
                 setVisibleCards(4);
             }
         };
 
-        updateVisibleCards();
-        window.addEventListener('resize', updateVisibleCards);
-        return () => window.removeEventListener('resize', updateVisibleCards);
+        updateLayout();
+        window.addEventListener('resize', updateLayout);
+        return () => window.removeEventListener('resize', updateLayout);
     }, []);
 
     // Event gallery carousel logic
@@ -147,13 +172,19 @@ const PortfolioPage = () => {
     const translateValue = (currentEventIndex * 100) / visibleCards;
 
     return (
-        <div className="min-h-screen bg-background">
+        <>
+          <Helmet>
+            <title>Portfolio - HPS</title>
+            <meta name="description" content="Explore our portfolio of successful projects and see how we've helped our clients achieve their goals." />
+            <link rel="canonical" href="https://www.thehps.in/portfolio" />
+          </Helmet>
+          <div className="min-h-screen bg-background">
             <Header />
             <SocialSidebar />
             <FloatingContact />
 
             {/* Hero Section with Background Image */}
-            <section className="pt-32 pb-20 md:pb-24 relative overflow-hidden">
+            <section className="pt-24 md:pt-32 pb-16 md:pb-24 relative overflow-hidden">
                 {/* Background Image with Overlay - Matching Hero Theme */}
                 <div className="absolute inset-0 overflow-hidden">
                     <div 
@@ -177,7 +208,7 @@ const PortfolioPage = () => {
                 </div>
 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div className="max-w-4xl mx-auto text-center mb-16">
+                    <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 backdrop-blur-sm rounded-full mb-6 border border-primary/30">
                             <Sparkles className="w-4 h-4 text-primary" />
                             <span className="text-sm font-medium text-background">OUR PORTFOLIO</span>
@@ -198,7 +229,7 @@ const PortfolioPage = () => {
                         <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
                             <Button 
                                 size="lg" 
-                                className="bg-primary hover:bg-primary/90 text-primary-foreground group shadow-lg hover:shadow-xl transition-all duration-300 rounded-full px-8 py-6 text-base font-semibold"
+                                className="bg-primary hover:bg-primary/90 text-primary-foreground group shadow-lg hover:shadow-xl transition-all duration-300 rounded-full px-8 py-6 text-sm md:text-base font-semibold"
                             >
                                 Let's Work together
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -270,15 +301,15 @@ const PortfolioPage = () => {
                         </div>
 
                         <ScrollAnimation animation="slide-left" delay={200}>
-                            <div className="relative w-full max-w-md mx-auto aspect-square">
+                            <div className="relative w-full max-w-[280px] sm:max-w-md mx-auto aspect-square flex items-center justify-center">
                                 {/* Animated Border Rings - Purple Theme */}
                                 <div className="absolute inset-0 rounded-full border border-indigo-500/10 animate-spin" style={{ animationDuration: '40s' }} />
                                 <div className="absolute inset-6 rounded-full border border-indigo-500/15 animate-spin" style={{ animationDuration: '30s', animationDirection: 'reverse' }} />
                                 <div className="absolute inset-12 rounded-full border border-indigo-500/20 animate-spin" style={{ animationDuration: '25s' }} />
                                 
                                 {/* Center Main Circle */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="relative w-32 h-32 rounded-full bg-indigo-500/10 backdrop-blur-sm flex items-center justify-center border-2 border-indigo-500/30 shadow-lg">
+                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <div className={`relative ${isMobile ? 'w-24 h-24' : 'w-32 h-32'} rounded-full bg-indigo-500/10 backdrop-blur-sm flex items-center justify-center border-2 border-indigo-500/30 shadow-lg pointer-events-auto`}>
                                         {/* Active Icon Display */}
                                         {expertiseAreas.map((area, index) => {
                                             const IconComponent = area.icon;
@@ -290,7 +321,7 @@ const PortfolioPage = () => {
                                                         isActive ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-50 rotate-180'
                                                     }`}
                                                 >
-                                                    <IconComponent className="w-8 h-8 text-indigo-600 mb-2" strokeWidth={1.5} />
+                                                    <IconComponent className={`${isMobile ? 'w-6 h-6' : 'w-8 h-8'} text-indigo-600 mb-1 sm:mb-2`} strokeWidth={1.5} />
                                                     <span className="text-xs font-medium text-slate-800">
                                                         {area.label}
                                                     </span>
@@ -307,7 +338,7 @@ const PortfolioPage = () => {
                                 {expertiseAreas.map((area, index) => {
                                     const IconComponent = area.icon;
                                     const angle = (index * (360 / expertiseAreas.length)) * (Math.PI / 180);
-                                    const radius = 200;
+                                    const radius = isMobile ? 110 : 180;
                                     const x = Math.cos(angle) * radius;
                                     const y = Math.sin(angle) * radius;
                                     const isActive = index === activeIndex;
@@ -321,13 +352,15 @@ const PortfolioPage = () => {
                                             }}
                                         >
                                             <div 
-                                                className={`w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all duration-500 shadow-lg ${
+                                                className={`rounded-full border-2 flex items-center justify-center transition-all duration-500 shadow-lg ${
+                                                    isMobile ? 'w-10 h-10' : 'w-14 h-14'
+                                                } ${
                                                     isActive 
                                                         ? 'border-indigo-500 bg-indigo-500/20 scale-125 shadow-indigo-500/25' 
                                                         : 'border-slate-300 bg-white/80 scale-100 hover:scale-110'
                                                 }`}
                                             >
-                                                <IconComponent className={`w-5 h-5 transition-colors duration-500 ${
+                                                <IconComponent className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'} transition-colors duration-500 ${
                                                     isActive ? 'text-indigo-600' : 'text-slate-500 hover:text-indigo-600'
                                                 }`} strokeWidth={1.5} />
                                             </div>
@@ -352,9 +385,78 @@ const PortfolioPage = () => {
                     </div>
                 </div>
             </section>
-            
+
+            {/* Strategic Collaborations Section */}
+            <section className="py-16 md:py-20 bg-muted/20">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-3xl mb-12 md:mb-16">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                                <Handshake className="w-5 h-5 text-white" />
+                            </div>
+                            <h2 className="font-bold animate-fade-in" style={{fontWeight: 500, fontSize: '30px', lineHeight: '30px'}}>
+                                Strategic <span className="relative inline-block">
+                                    <span className="text-primary">Collaborations</span>
+                                    <span className="absolute bottom-0 left-0 right-0 h-2 bg-primary/20 -z-10 transform -skew-x-12" />
+                                </span>
+                            </h2>
+                        </div>
+                        
+                        <p className="text-xs md:text-sm text-muted-foreground mb-6 leading-relaxed max-w-2xl" style={{fontWeight: 300}}>
+                            At HPS, we believe in the power of strategic partnerships to drive innovation and create lasting impact. Our Memorandum of Understanding (MoU) partnerships represent our commitment to collaborative growth, knowledge sharing, and pushing the boundaries of what's possible in the digital landscape.
+                        </p>
+                    </div>
+
+                    {/* MoU Partners Grid - Matching Other Pages Style */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                        {mouPartners.map((partner, index) => (
+                            <ScrollAnimation key={index} animation="fade-up" delay={index * 100}>
+                                <div className="group bg-card rounded-lg border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg h-full flex flex-col">
+                                    
+                                    {/* Logo Container */}
+                                    <div className="p-6 pb-4 flex justify-center">
+                                        <div className="w-20 h-20 flex items-center justify-center rounded-lg bg-background border border-border/30 group-hover:border-primary/20 transition-all duration-300">
+                                            {partner.logo ? (
+                                                <LazyImage
+                                                    src={partner.logo}
+                                                    alt={`${partner.name} logo`}
+                                                    className="max-w-[60px] max-h-[50px] w-auto h-auto object-contain transition-transform duration-300"
+                                                />
+                                            ) : (
+                                                <FileText className="w-10 h-10 text-primary/60" />
+                                            )}
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Content Section */}
+                                    <div className="p-4 pt-2 flex-1 flex flex-col text-center">
+                                        
+                                        {/* Partner Name */}
+                                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-3 line-clamp-2">
+                                            {partner.name}
+                                        </h3>
+                                        
+                                        {/* Partner Type Badge */}
+                                        <div className="mb-3">
+                                            <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium border border-primary/20">
+                                                {partner.type}
+                                            </span>
+                                        </div>
+                                        
+                                        {/* Description */}
+                                        <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                                            {partner.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </ScrollAnimation>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Event Gallery Section - Matching Client Case Studies Style */}
-            <section className="py-16 md:py-20 bg-background">
+            <section className="py-16 md:py-20 bg-background" style={{paddingBottom:'0'}}>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="mb-12 md:mb-16">
                         <div className="flex items-center gap-3 mb-4">
@@ -521,10 +623,11 @@ const PortfolioPage = () => {
                 </div>
             </section>
 
-            <ContactCard />
-            <Footer />
-        </div>
-    );
-};
+              <ContactCard />
+              <Footer />
+            </div>
+          </>
+        );
+      };
 
 export default PortfolioPage;

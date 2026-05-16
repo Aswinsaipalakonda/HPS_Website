@@ -32,15 +32,15 @@ const Hero = () => {
   }, [serviceIcons.length]);
 
   return (
-    <section className="pt-20 pb-20 px-4 relative overflow-hidden">
+    <section className="pt-20 pb-12 md:pb-20 md:px-4 relative overflow-hidden">
       {/* Animated Background Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-20 right-10 md:right-20 w-48 md:w-72 h-48 md:h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 left-10 md:left-20 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div className="container mx-auto relative z-10">
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50">
+      <div className="relative z-10">
+        <div className="relative md:rounded-3xl overflow-hidden shadow-2xl border-y md:border border-border/50">
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
@@ -54,7 +54,7 @@ const Hero = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-2xl" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-2xl" />
           
-          <div className="relative flex items-center min-h-[650px] p-8 md:p-16 lg:p-20">
+          <div className="relative flex items-center min-h-[450px] md:min-h-[650px] p-5 sm:p-8 md:p-16 lg:p-20">
             {/* Content */}
             <div className="text-background max-w-3xl relative z-10">
               {/* Badge */}
@@ -64,7 +64,7 @@ const Hero = () => {
               </div>
 
               {/* Main Heading */}
-              <h1 className="text-4xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight animate-fade-in" style={{fontWeight: 500, animationDelay: '0.1s'}}>
+              <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight animate-fade-in" style={{fontWeight: 500, animationDelay: '0.1s'}}>
                 Transforming businesses with{' '}
                 <span className="relative inline-block">
                   <span className="text-primary">comprehensive digital solutions</span>
@@ -95,6 +95,7 @@ const Hero = () => {
                 <Button 
                   size="lg" 
                   className="bg-primary hover:bg-primary/90 text-primary-foreground group shadow-lg hover:shadow-xl transition-all duration-300 rounded-full px-8 py-6 text-base font-semibold"
+                  onClick={() => window.location.href = '/contact'}
                 >
                   Let's Build Your Future Together
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -136,9 +137,8 @@ const Hero = () => {
                   const angle = (index * 60) * (Math.PI / 180); // 60 degrees apart
                   
                   // Distribute icons across the three circular rings
-                  // Outer ring (inset-0): radius ~120px, Middle ring (inset-4): radius ~104px, Inner ring (inset-8): radius ~88px
-                  const ringRadii = [110, 110, 110]; // Centers of the three rings
-                  const ringIndex = index % 3; // Distribute evenly: 0,1,2,0,1,2
+                  const ringRadii = [110, 110, 110]; 
+                  const ringIndex = index % 3; 
                   const radius = ringRadii[ringIndex];
                   
                   const x = Math.cos(angle) * radius;

@@ -3,8 +3,10 @@ import SocialSidebar from "@/components/SocialSidebar";
 import FloatingContact from "@/components/FloatingContact";
 import Footer from "@/components/Footer";
 import ContactCard from "@/components/ContactCard";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+
 import webDevelopmentImage from "@/assets/web_developement_services.png";
 import appDevelopmentImage from "@/assets/app_development_services.png";
 import digitalMarketingImage from "@/assets/digital_marketing.png";
@@ -93,28 +95,28 @@ const digitalMarketingServices = [
   {
     icon: TrendingUp,
     number: "01",
-    title: "SEO Services",
+    title: "Organic Search Outreach",
     description: "In the modern era of digitalization, SEO is the key to opening doors for companies willing to increase their online presence. Our professionals design personalized SEO strategies to increase your business rankings.",
     path: "#"
   },
   {
     icon: DollarSign,
     number: "02",
-    title: "Pay-Per-Click Advertising",
+    title: "Paid Media Outreach",
     description: "Pay-per-click (PPC) advertising is difficult to implement, but HPS makes it easy and profitable. We oversee keyword research to ad copy, so your PPC campaign is ROI-driven. With HPS, each dollar spent on PPC yields tangible business results.",
     path: "#"
   },
   {
     icon: MessageCircle,
     number: "03",
-    title: "Social Media Marketing",
+    title: "Social Community Outreach",
     description: "Social media is crucial in contemporary marketing, allowing companies to connect with customers. HPS offers tailored services to make your social media campaign easier and increase ROI. We work together with you on creating engaging content.",
     path: "#"
   },
   {
     icon: MapPin,
     number: "04",
-    title: "Local Listing Services",
+    title: "Local Market Outreach",
     description: "Local directories are indispensable to get noticed in local search. HPS provides services to increase your online exposure and local traffic. Our experts implement sophisticated strategies for top Google local search rankings to get your business noticed.",
     path: "#"
   },
@@ -214,11 +216,17 @@ const businessSolutions = [
 
 const ServicesPage = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <SocialSidebar />
-      <FloatingContact />
-      <div className="pt-32 pb-8">
+    <>
+      <Helmet>
+        <title>Our Services - HPS</title>
+        <meta name="description" content="HPS offers a wide range of services including web development, mobile app development, digital marketing, and business solutions. Learn more about how we can help your business grow." />
+        <link rel="canonical" href="https://www.thehps.in/services" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <SocialSidebar />
+        <FloatingContact />
+      <div className="pt-32 pb-8" style={{paddingBottom: '1px'}}>
         {/* Web Services Section */}
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -296,6 +304,90 @@ const ServicesPage = () => {
             </ScrollAnimation>
           </div>
         </section>
+        {/* Divider */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+          <div className="border-t border-border/50"></div>
+        </div>
+
+        {/* EduSuite Pro Services Section */}
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left Section */}
+            <ScrollAnimation animation="slide-right" delay={0}>
+              <div className="space-y-6">
+                <h1 
+                  className="font-bold text-foreground leading-tight" 
+                  style={{fontFamily: '"Poppins", sans-serif', fontWeight: 500, fontSize: '30px', lineHeight: '30px'}}
+                >
+                  EduSuite Pro - Complete Educational Management Solution
+                </h1>
+                <p 
+                  className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-6" 
+                  style={{fontWeight: 300}}
+                >
+                  All-in-one integrated solution for educational institutions. Streamline operations, enhance learning experiences, and manage your entire educational ecosystem with our comprehensive platform.
+                </p>
+                <div className="mt-6 flex-1 flex items-center justify-center w-full">
+                  <LazyImage 
+                    src={eduSuiteImage} 
+                    alt="EduSuite Pro Platform" 
+                    className="w-full max-w-2xl h-auto"
+                  />
+                </div>
+              </div>
+            </ScrollAnimation>
+
+            {/* Right Section - EduSuite Services */}
+            <ScrollAnimation animation="slide-left" delay={100}>
+              <div>
+                
+                <div className="grid sm:grid-cols-2 gap-6">
+                  {edusuiteServices.map((service, index) => {
+                    const IconComponent = service.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="group relative p-6 rounded-2xl bg-card border border-border/80 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 flex flex-col h-full"
+                      >
+                        {/* Number */}
+                        <div className="absolute top-4 right-4">
+                          <span className="text-lg font-light text-muted-foreground/15 select-none group-hover:text-muted-foreground/25 transition-colors duration-300" style={{ fontFamily: '"Poppins", sans-serif', fontWeight: 600 }}>
+                            {service.number}
+                          </span>
+                        </div>
+
+                        {/* Icon */}
+                        <div className="mb-4">
+                          <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <IconComponent className="w-7 h-7 text-white" strokeWidth={1.5} />
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex flex-col flex-1 space-y-3">
+                          <h3 className="font-semibold text-lg group-hover:text-primary transition-colors duration-300" style={{fontFamily: '"Poppins", sans-serif'}}>
+                            {service.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                            {service.description}
+                          </p>
+                          <Link 
+                            to={service.path}
+                            className="inline-flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors duration-300 underline underline-offset-4 mt-auto"
+                          >
+                            Know More
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </section>
+
 
         {/* Divider */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-20">
@@ -395,13 +487,13 @@ const ServicesPage = () => {
                   className="font-bold text-foreground leading-tight" 
                   style={{fontFamily: '"Poppins", sans-serif', fontWeight: 500, fontSize: '30px', lineHeight: '30px'}}
                 >
-                  Our Digital Marketing Services
+                  Out Reach Services
                 </h1>
                 <p 
                   className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-6" 
                   style={{fontWeight: 300}}
                 >
-                  We assist you in attaining your digital growth, to develop responsive websites and effective strategies that promote brand visibility and ROI.
+                  Accelerate your digital growth with responsive websites and strategic outreach designed to boost brand visibility and drive measurable ROI.
                 </p>
                 <div className="mt-6">
                   <LazyImage 
@@ -463,90 +555,7 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* Divider */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="border-t border-border/50"></div>
-        </div>
-
-        {/* EduSuite Pro Services Section */}
-        <section className="container mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left Section */}
-            <ScrollAnimation animation="slide-right" delay={0}>
-              <div className="space-y-6">
-                <h1 
-                  className="font-bold text-foreground leading-tight" 
-                  style={{fontFamily: '"Poppins", sans-serif', fontWeight: 500, fontSize: '30px', lineHeight: '30px'}}
-                >
-                  EduSuite Pro - Complete Educational Management Solution
-                </h1>
-                <p 
-                  className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-6" 
-                  style={{fontWeight: 300}}
-                >
-                  All-in-one integrated solution for educational institutions. Streamline operations, enhance learning experiences, and manage your entire educational ecosystem with our comprehensive platform.
-                </p>
-                <div className="mt-6 flex-1 flex items-center justify-center w-full">
-                  <LazyImage 
-                    src={eduSuiteImage} 
-                    alt="EduSuite Pro Platform" 
-                    className="w-full max-w-2xl h-auto"
-                  />
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            {/* Right Section - EduSuite Services */}
-            <ScrollAnimation animation="slide-left" delay={100}>
-              <div>
-                
-                <div className="grid sm:grid-cols-2 gap-6">
-                  {edusuiteServices.map((service, index) => {
-                    const IconComponent = service.icon;
-                    return (
-                      <div
-                        key={index}
-                        className="group relative p-6 rounded-2xl bg-card border border-border/80 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 flex flex-col h-full"
-                      >
-                        {/* Number */}
-                        <div className="absolute top-4 right-4">
-                          <span className="text-lg font-light text-muted-foreground/15 select-none group-hover:text-muted-foreground/25 transition-colors duration-300" style={{ fontFamily: '"Poppins", sans-serif', fontWeight: 600 }}>
-                            {service.number}
-                          </span>
-                        </div>
-
-                        {/* Icon */}
-                        <div className="mb-4">
-                          <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <IconComponent className="w-7 h-7 text-white" strokeWidth={1.5} />
-                          </div>
-                        </div>
-
-                        {/* Content */}
-                        <div className="flex flex-col flex-1 space-y-3">
-                          <h3 className="font-semibold text-lg group-hover:text-primary transition-colors duration-300" style={{fontFamily: '"Poppins", sans-serif'}}>
-                            {service.title}
-                          </h3>
-                          <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                            {service.description}
-                          </p>
-                          <Link 
-                            to={service.path}
-                            className="inline-flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors duration-300 underline underline-offset-4 mt-auto"
-                          >
-                            Know More
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </section>
-
+        
         {/* Divider */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-20">
           <div className="border-t border-border/50"></div>
@@ -630,8 +639,9 @@ const ServicesPage = () => {
         {/* Contact Card */}
         <ContactCard />
       
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

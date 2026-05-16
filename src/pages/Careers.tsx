@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import ContactCard from "@/components/ContactCard";
 import SocialSidebar from "@/components/SocialSidebar";
 import FloatingContact from "@/components/FloatingContact";
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { 
   Sparkles, 
@@ -144,10 +145,16 @@ const Careers = () => {
   const hasOpenPositions = openPositions.length > 0;
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <SocialSidebar />
-      <FloatingContact />
+    <>
+      <Helmet>
+        <title>Careers - HPS</title>
+        <meta name="description" content="Join the HPS team and build your legacy with us. We're looking for talented individuals to join our team and help us build the future of technology." />
+        <link rel="canonical" href="https://www.thehps.in/careers" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <SocialSidebar />
+        <FloatingContact />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pb-20 relative overflow-hidden" style={{paddingBottom: '0px'}}>
@@ -405,8 +412,9 @@ const Careers = () => {
       {/* Contact Card */}
       <ContactCard />
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

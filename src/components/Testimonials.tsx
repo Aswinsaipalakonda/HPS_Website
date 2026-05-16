@@ -5,65 +5,46 @@ import LazyImage from "@/components/LazyImage";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "CEO, TechStart Inc",
-    company: "TechStart Inc",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
+    name: "Jitendra Kumar",
+    role: "CEO, Beauty Centre",
+    company: "Beauty Centre",
+    image: "/testimonials/manmade.png",
     rating: 5,
-    title: "Landing Page that Boosted Conversions",
-    text: "Hps has done a fantastic job with this project and delivered us a professional landing page to be used on pay per click campaigns that is increasing our conversions. We highly recommend working with Hps! The team does a fantastic job and it is always a pleasure working with them.",
-    category: "Landing Page, PPC",
-  },
-  {
-    name: "Michael Chen",
-    role: "Founder, GreenLeaf Co",
-    company: "GreenLeaf Co",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    rating: 5,
-    title: "Complete Digital Transformation",
-    text: "Working with Hps was a game-changer for our business. They understood our vision and created a stunning website that perfectly represents our brand. Our online presence has never been stronger.",
+    title: "Exceptional Digital Growth & Brand Elevation",
+    text: "HPS transformed our online presence with a modern and professional website that perfectly showcases our salon furniture and beauty equipment. Their design and branding support helped us reach more customers and present our business with greater credibility.",
     category: "Website Design, Branding",
   },
   {
-    name: "Emily Rodriguez",
-    role: "Marketing Director, StyleHub",
-    company: "StyleHub",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    name: "Trinadh",
+    role: "CEO & Founder, OpenCT",
+    company: "OpenCT",
+    image: "/testimonials/openct.jpeg",
+    rating: 5,
+    title: "Complete Digital Transformation",
+    text: "The OpenCT app beautifully blends technology with empathy. Your thoughtful design and seamless functionality created a platform where users truly feel supported and connected. The focus on user experience and accessibility made a meaningful impact on bringing our mental wellness vision to life.",
+    category: "Website Design, Branding",
+  },
+  {
+    name: "Marcus Obubonojo",
+    role: "Founder & CEO, MotionShield",
+    company: "MotionShield",
+    image: "/testimonials/marcus.png",
     rating: 5,
     title: "Strategic Partnership Excellence",
-    text: "The attention to detail and creative approach Hps brought to our project was outstanding. They're not just developers, they're strategic partners who truly understand our business goals.",
+    text: "From concept to completion, you showcased exceptional understanding and precision in bringing our vision to life. MotionShield now stands as a reliable bridge between motorists and service providers. The platform’s strong performance and clear, intuitive design have significantly elevated user satisfaction.",
     category: "Digital Marketing, Strategy",
   },
   {
-    name: "David Thompson",
-    role: "Owner, Foodie's Delight",
-    company: "Foodie's Delight",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
+    name: "Murali",
+    role: "CEO & Founder, Zeengi",
+    company: "Zeengi",
+    image: "/testimonials/testimonials-2.png",
     rating: 5,
-    title: "E-commerce Success Story",
-    text: "Our new website looks amazing and has brought in 3x more online orders. The team at Hps made the entire process smooth and enjoyable. Highly recommended!",
+    title: "Complete Digital Transformation",
+    text: "Zeengi’s multi-role ecosystem is a complete game changer. You delivered a powerful, scalable, and intuitive e-commerce platform that seamlessly connects users, vendors, franchises, and delivery partners. The workflow automation and smooth UI have greatly enhanced our operations and customer engagement.",
     category: "E-commerce, Web Development",
   },
-  {
-    name: "Lisa Wang",
-    role: "VP Operations, HealthPlus",
-    company: "HealthPlus",
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face",
-    rating: 5,
-    title: "Complex Portal Delivered Perfectly",
-    text: "Hps delivered a complex healthcare portal on time and within budget. Their technical expertise and customer service are unmatched. We couldn't be happier with the results.",
-    category: "Custom Software, Healthcare",
-  },
-  {
-    name: "James Anderson",
-    role: "Director, Creative Studio",
-    company: "Creative Studio",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    rating: 5,
-    title: "Portfolio That Showcases Excellence",
-    text: "As a creative myself, I'm very particular about design. Hps exceeded my expectations with a portfolio site that truly showcases my work beautifully. Outstanding work!",
-    category: "Portfolio Design, UI/UX",
-  },
+  
 ];
 
 const Testimonials = () => {
@@ -141,7 +122,7 @@ const Testimonials = () => {
             {/* Left Side - Image & Client Info */}
             <div className="relative group">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border/50 bg-card">
-                <div className="relative h-[400px]">
+                <div className="relative h-[450px]">
                   <LazyImage 
                     src={currentTestimonial.image} 
                     alt={currentTestimonial.name}
