@@ -77,9 +77,9 @@ const Header = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const previousActiveIndexRef = useRef<number | null>(null);
   const animationFrameRef = useRef<number | null>(null);
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout>();
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const lastScrollY = useRef(0);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -264,25 +264,25 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         !isHomePage || isScrolled
           ? "bg-background/90 backdrop-blur-sm border-b border-border/50 shadow-sm translate-y-0 opacity-100" 
-          : "translate-y-0 opacity-100"
+          : "bg-transparent translate-y-0 opacity-100"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-4">
+        <div className={`flex items-center justify-between gap-4 ${isHomePage && !isScrolled ? "py-1.5 sm:py-2" : "py-2.5 sm:py-3"}`}>
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center group transition-transform duration-300 hover:scale-105"
+            className="flex h-[52px] shrink-0 items-center group transition-transform duration-300 hover:scale-105 sm:h-[58px] lg:h-[64px]"
           >
             <img 
               src={hpsLogo} 
               alt="HPS Logo" 
-              className="h-14 sm:h-14 lg:h-14 w-auto transition-all duration-300 group-hover:opacity-90" 
+              className="block h-full w-auto max-w-[180px] object-contain mix-blend-multiply transition-all duration-300 group-hover:opacity-90 sm:max-w-[210px] lg:max-w-[240px] xl:max-w-[260px]" 
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 relative">
+          <nav className="relative hidden items-center gap-1 xl:gap-2 lg:flex">
             {navLinks.map((link) => {
               let isActive = false;
               if (link.path !== "#") {
