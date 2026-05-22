@@ -54,7 +54,7 @@ const Hero = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-2xl" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-2xl" />
           
-          <div className="relative flex items-center min-h-[450px] md:min-h-[650px] p-5 sm:p-8 md:p-16 lg:p-20">
+          <div className="relative flex items-center min-h-[450px] md:min-h-[85vh] p-5 sm:p-8 md:p-16 lg:p-20">
             {/* Content */}
             <div className="text-background max-w-3xl relative z-10">
               {/* Badge */}
