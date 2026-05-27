@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, ChevronDown, Monitor, GraduationCap, TrendingUp, Smartphone, Palette, Code, Zap, Database } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 // Using public folder logo
-const hpsLogo = "src/assets/hps_new_logo.png";
+import hpsLogo from "@/assets/hps_new_logo.png";
 import LazyImage from "@/components/LazyImage";
 
 // Services dropdown data

@@ -1,7 +1,7 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, ArrowRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 // Using public folder logo
-const hpsLogoWhite = "/HPS_logo.png";
+import hpsLogoWhite from "@/assets/hps_new_logo_white.png";
 import LazyImage from "@/components/LazyImage";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
