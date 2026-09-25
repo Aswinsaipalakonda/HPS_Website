@@ -43,7 +43,7 @@ const Footer = () => {
             {/* Social Media */}
             <div className="flex items-center gap-4 pt-4">
               <a 
-                href="https://wa.me/+919246615251" 
+                href="https://wa.me/917288801257" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary transition-colors duration-300 flex items-center justify-center group"
@@ -183,9 +183,14 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-gray-400 text-sm mb-1">Phone</p>
-                  <a href="tel:9246615251" className="text-white hover:text-primary transition-colors duration-300 text-sm">
-                    +91 9246615251
-                  </a>
+                  <div className="flex flex-col space-y-1">
+                    <a href="tel:+917288801257" className="text-white hover:text-primary transition-colors duration-300 text-sm">
+                      +91 7288801257
+                    </a>
+                    <a href="tel:+917093664846" className="text-white hover:text-primary transition-colors duration-300 text-sm">
+                      +91 7093664846
+                    </a>
+                  </div>
                 </div>
               </li>
               <li className="flex items-start gap-3">

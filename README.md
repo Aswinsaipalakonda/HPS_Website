@@ -163,10 +163,10 @@ npm run preview
 |:---:|:---|:---|
 | 🌐 | **Website** | [www.thehps.in](https://www.thehps.in) |
 | 📧 | **Email** | [info@thehps.in](mailto:info@thehps.in) |
-| 📞 | **Phone** | [+91 9246615251](tel:+919246615251) |
+| 📞 | **Phone** | [+91 7288801257](tel:+917288801257) / [+91 7093664846](tel:+917093664846) |
 | 📍 | **Address** | 31-7-67, Assam Gardens, Visakhapatnam, AP 530004 |
 | 📸 | **Instagram** | [@harsha_perfect_solutions](https://www.instagram.com/harsha_perfect_solutions) |
-| 💬 | **WhatsApp** | [Chat with us](https://wa.me/+919246615251) |
+| 💬 | **WhatsApp** | [Chat with us](https://wa.me/917288801257) |
 
 </div>
 

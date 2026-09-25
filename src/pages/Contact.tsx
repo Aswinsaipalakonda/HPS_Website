@@ -28,7 +28,7 @@ const ContactPage = () => {
     {
       icon: Phone,
       title: "Call Us",
-      info: "9246615251",
+      info: "+91 7288801257 / +91 7093664846",
       description: "24/7 Support",
       action: "Call Now",
     },

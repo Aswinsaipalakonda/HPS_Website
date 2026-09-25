@@ -14,14 +14,14 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 const SocialSidebar = () => {
   const socialLinks = [
     {
-      href: "https://wa.me/+919246615251",
+      href: "https://wa.me/917288801257",
       icon: WhatsAppIcon,
       label: "WhatsApp",
       bgColor: "bg-[#25D366]",
       hoverBgColor: "hover:bg-[#20BA5A]",
     },
     {
-      href: "tel:+919246615251",
+      href: "tel:+917288801257",
       icon: Phone,
       label: "Call",
       bgColor: "bg-[#092f2e]",
